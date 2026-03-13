@@ -1,0 +1,297 @@
+/* Reuse your existing CSS variables and base styles from cart.html */
+:root {
+  --primary: #8a4fff;
+  --primary-light: #b18aff;
+  --primary-pastel: #f0e6ff;
+  --secondary: #ff9eb7;
+  --dark: #1a1a1a;
+  --light: #ffffff;
+  --gray: #888888;
+  --light-bg: #faf8ff;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  background-color: var(--light-bg);
+  color: var(--dark);
+  line-height: 1.7;
+}
+
+/* Reuse your top-bar and navbar styles from cart.html */
+.top-bar {
+  background: linear-gradient(to right, #ffd6e7, #c2f0ff, #e2d1ff);
+  text-align: center;
+  padding: 10px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 5%;
+  background: var(--light);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 30px rgba(0, 0, 0, 0.05);
+}
+
+.logo {
+  font-family: "Playfair Display", serif;
+  font-size: 32px;
+  font-weight: 700;
+  position: relative;
+}
+
+.logo::after {
+  content: "";
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(to right, var(--primary), var(--secondary));
+}
+
+.nav-links {
+  display: flex;
+  gap: 35px;
+}
+
+.nav-links a {
+  position: relative;
+  text-decoration: none;
+  color: var(--dark);
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.nav-links a:hover {
+  color: var(--primary);
+}
+
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: var(--primary);
+  transition: width 0.3s ease;
+}
+
+.nav-links a:hover::after {
+  width: 100%;
+}
+/* Checkout Container */
+.checkout-container {
+  max-width: 1200px;
+  margin: 40px auto;
+  padding: 0 5%;
+  display: flex;
+  gap: 30px;
+}
+
+/* Checkout Form */
+.checkout-form {
+  flex: 2;
+  background: var(--light);
+  border-radius: 16px;
+  padding: 30px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+}
+
+.checkout-title {
+  font-family: "Playfair Display", serif;
+  font-size: 28px;
+  margin-bottom: 30px;
+  position: relative;
+}
+
+.checkout-title::after {
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  left: 0;
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(to right, var(--primary), var(--secondary));
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 500;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  padding: 12px 15px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-family: "Poppins", sans-serif;
+  transition: border 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  border-color: var(--primary);
+  outline: none;
+}
+
+.form-row {
+  display: flex;
+  gap: 20px;
+}
+
+.form-row .form-group {
+  flex: 1;
+}
+
+/* Order Summary Sidebar */
+.order-summary {
+  flex: 1;
+  background: var(--light);
+  border-radius: 16px;
+  padding: 30px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  align-self: flex-start;
+}
+
+.order-summary-title {
+  font-family: "Playfair Display", serif;
+  font-size: 22px;
+  margin-bottom: 20px;
+}
+
+.order-items {
+  max-height: 300px;
+  overflow-y: auto;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 20px;
+}
+
+.order-item {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 15px;
+}
+
+.order-item-img {
+  width: 60px;
+  height: 60px;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.order-item-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.order-item-details {
+  flex: 1;
+}
+
+.order-item-name {
+  font-weight: 500;
+  margin-bottom: 5px;
+}
+
+.order-item-price {
+  color: var(--primary);
+  font-size: 14px;
+}
+
+.order-item-qty {
+  color: var(--gray);
+  font-size: 14px;
+}
+
+.order-totals {
+  margin-top: 20px;
+}
+
+.order-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.order-total {
+  font-weight: 700;
+  font-size: 18px;
+  margin-top: 15px;
+  padding-top: 15px;
+  border-top: 1px solid #eee;
+}
+
+.pay-btn {
+  width: 100%;
+  background: var(--primary);
+  color: white;
+  border: none;
+  padding: 16px;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  margin-top: 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.pay-btn:hover {
+  background: var(--dark);
+  transform: translateY(-2px);
+}
+
+@media (max-width: 768px) {
+  .checkout-container {
+    flex-direction: column;
+  }
+
+  .form-row {
+    flex-direction: column;
+    gap: 0;
+  }
+}
+.back-arrow {
+  position: relative;
+  cursor: pointer;
+}
+
+.back-arrow i {
+  font-size: 22px;
+  color: var(--dark);
+  transition: color 0.3s ease;
+}
+
+.back-arrow:hover i {
+  color: var(--primary);
+}
+.pay-btn:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+  transform: none;
+}
+.pay-btn:disabled:hover {
+  background-color: #cccccc;
+}

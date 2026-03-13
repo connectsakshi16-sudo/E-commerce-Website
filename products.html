@@ -1,0 +1,806 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>UNLEASH. | Luxury Cosmetics Collection</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;700&family=Poppins:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <script src="../static/cart.js"></script>
+  </head>
+  <style>
+    :root {
+      --primary: #8a4fff;
+      --primary-light: #b18aff;
+      --primary-pastel: #f0e6ff;
+      --secondary: #ff9eb7;
+      --dark: #1a1a1a;
+      --light: #ffffff;
+      --gray: #888888;
+      --light-bg: #faf8ff;
+      --gold: #ffc107;
+      --silver: #e0e0e0;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: "Poppins", sans-serif;
+      background-color: var(--light-bg);
+      color: var(--dark);
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .top-bar {
+      background: linear-gradient(to right, #ffd6e7, #c2f0ff, #e2d1ff);
+      text-align: center;
+      padding: 10px;
+      font-size: 14px;
+      font-weight: 500;
+      letter-spacing: 0.8px;
+      color: var(--dark);
+    }
+
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 5%;
+      background: var(--light);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 30px rgba(0, 0, 0, 0.05);
+    }
+
+    .logo {
+      /* Keep all your existing .logo styles exactly as they are */
+      font-family: "Playfair Display", serif;
+      font-size: 32px;
+      font-weight: 700;
+      position: relative;
+      /* No need to add anything new here */
+    }
+
+    /* Keep your existing .logo::after styles */
+    .logo::after {
+      content: "";
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: linear-gradient(to right, var(--primary), var(--secondary));
+    }
+
+    /* Add hover effect if you want it */
+    .logo:hover {
+      color: var(--primary);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 35px;
+    }
+
+    .nav-links a {
+      position: relative;
+      text-decoration: none;
+      color: var(--dark);
+      font-size: 16px;
+      font-weight: 500;
+      letter-spacing: 0.5px;
+      transition: all 0.3s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--primary);
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background-color: var(--primary);
+      transition: width 0.3s ease;
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .cart-icon {
+      position: relative;
+      cursor: pointer;
+    }
+
+    .cart-icon i {
+      font-size: 22px;
+      color: var(--dark);
+      transition: color 0.3s ease;
+    }
+
+    .cart-icon:hover i {
+      color: var(--primary);
+    }
+
+    .cart-count {
+      position: absolute;
+      top: -10px;
+      right: -10px;
+      background-color: var(--primary);
+      color: var(--light);
+      font-size: 12px;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 600;
+    }
+
+    .hero-section {
+      height: 60vh;
+      background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+        url("https://images.unsplash.com/photo-1596462502278-27bfdc403348?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80")
+          center/cover;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: var(--light);
+      margin-bottom: 60px;
+    }
+
+    .hero-content {
+      max-width: 800px;
+      padding: 0 20px;
+    }
+
+    .hero-content h1 {
+      font-family: "Playfair Display", serif;
+      font-size: 48px;
+      font-weight: 700;
+      margin-bottom: 20px;
+      letter-spacing: 1px;
+    }
+
+    .hero-content p {
+      font-size: 18px;
+      margin-bottom: 30px;
+      opacity: 0.9;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+
+    .section-title h2 {
+      font-family: "Playfair Display", serif;
+      font-size: 36px;
+      font-weight: 700;
+      color: var(--dark);
+      position: relative;
+      display: inline-block;
+      margin-bottom: 15px;
+    }
+
+    .section-title h2::after {
+      content: "";
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 3px;
+      background: linear-gradient(to right, var(--primary), var(--secondary));
+    }
+
+    .section-title p {
+      color: var(--gray);
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .products-container {
+      padding: 0 5% 80px;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 40px;
+      max-width: 1600px;
+      margin: 0 auto;
+    }
+
+    .product-card {
+      background: var(--light);
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
+      position: relative;
+    }
+
+    .product-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+    }
+
+    .product-badge {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      background: var(--primary);
+      color: var(--light);
+      padding: 5px 12px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 600;
+      z-index: 2;
+    }
+
+    .product-image {
+      height: 320px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .product-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.8s ease;
+    }
+
+    .product-card:hover .product-image img {
+      transform: scale(1.08);
+    }
+
+    .product-info {
+      padding: 25px;
+      text-align: center;
+    }
+
+    .product-title {
+      font-family: "Playfair Display", serif;
+      font-size: 20px;
+      font-weight: 600;
+      margin-bottom: 12px;
+      color: var(--dark);
+    }
+
+    .product-desc {
+      color: var(--gray);
+      font-size: 14px;
+      margin-bottom: 15px;
+      line-height: 1.6;
+    }
+
+    .price-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    .current-price {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--primary);
+    }
+
+    .original-price {
+      font-size: 16px;
+      color: var(--gray);
+      text-decoration: line-through;
+    }
+
+    .add-to-cart {
+      background: var(--primary);
+      color: var(--light);
+      border: none;
+      padding: 14px 0;
+      border-radius: 8px;
+      font-size: 15px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      width: 100%;
+      letter-spacing: 0.5px;
+    }
+
+    .add-to-cart:hover {
+      background: var(--dark);
+      transform: translateY(-2px);
+    }
+
+    .add-to-cart.added {
+      background: var(--dark);
+    }
+
+    /* Add to Cart Confirmation */
+    .add-to-cart-confirmation {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: rgba(0, 0, 0, 0.8);
+      color: white;
+      padding: 10px 20px;
+      border-radius: 4px;
+      font-size: 14px;
+      animation: fadeInOut 2s ease-in-out;
+      opacity: 0;
+      z-index: 10;
+    }
+
+    @keyframes fadeInOut {
+      0% {
+        opacity: 0;
+      }
+      20% {
+        opacity: 1;
+      }
+      80% {
+        opacity: 1;
+      }
+      100% {
+        opacity: 0;
+      }
+    }
+
+    @media (max-width: 1200px) {
+      .products-container {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    @media (max-width: 900px) {
+      .hero-content h1 {
+        font-size: 40px;
+      }
+
+      .products-container {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .navbar {
+        padding: 15px 5%;
+      }
+
+      .nav-links {
+        gap: 20px;
+      }
+
+      .hero-content h1 {
+        font-size: 36px;
+      }
+
+      .hero-content p {
+        font-size: 16px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .nav-links {
+        display: none;
+      }
+
+      .hero-section {
+        height: 50vh;
+      }
+
+      .hero-content h1 {
+        font-size: 32px;
+      }
+
+      .products-container {
+        grid-template-columns: 1fr;
+        padding: 0 5% 60px;
+      }
+
+      .product-image {
+        height: 280px;
+      }
+    }
+  </style>
+
+  <body>
+    <div class="top-bar">FREE SHIPPING ON ALL ORDERS ABOVE ₹499</div>
+
+    <div class="navbar">
+      <a
+        href="index.html"
+        class="logo"
+        style="color: inherit; text-decoration: none"
+        >UNLEASH.</a
+      >
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="#">Shop</a>
+        <a href="blogPage.html">Blog</a>
+        <a href="reviews.html">Reviews</a>
+        <a href="contact.html">Contact</a>
+      </div>
+
+      <div class="cart-icon">
+        <a href="cart.html">
+          <i class="fas fa-shopping-cart"></i>
+          <span id="cart-count" class="cart-count">0</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="hero-section">
+      <div class="hero-content">
+        <h1>Luxury Beauty Redefined</h1>
+        <p>
+          Discover our premium collection of skincare essentials crafted with
+          natural ingredients and cutting-edge science
+        </p>
+      </div>
+    </div>
+
+    <div class="section-title">
+      <h2>Our Best Sellers</h2>
+      <p>Products loved by thousands of beauty enthusiasts worldwide</p>
+    </div>
+
+    <div class="products-container">
+      <!-- Product 1 -->
+      <div class="product-card" data-id="prod1">
+        <div class="product-badge">BESTSELLER</div>
+        <div class="product-image">
+          <img
+            src="https://i.postimg.cc/bwkrK6HM/IMG-20250308-WA0040.jpg"
+            alt="Serum"
+          />
+        </div>
+        <div class="product-info">
+          <h3 class="product-title">Gentle Face Serum with Aloe Vera</h3>
+          <p class="product-desc">
+            Hydrating serum with pure aloe vera extract for all skin types
+          </p>
+          <div class="price-container">
+            <span class="current-price">₹300.00</span>
+            <span class="original-price">₹450.00</span>
+          </div>
+          <button class="add-to-cart">Add to Cart</button>
+        </div>
+      </div>
+
+      <!-- Product 2 -->
+      <div class="product-card" data-id="prod2">
+        <div class="product-badge">NEW</div>
+        <div class="product-image">
+          <img
+            src="https://i.postimg.cc/MHwXZ165/IMG-20250308-WA0041.jpg"
+            alt="Hydrating Lip Mask"
+          />
+        </div>
+        <div class="product-info">
+          <h3 class="product-title">Hydrating Lip Mask</h3>
+          <p class="product-desc">
+            Overnight treatment for dry, chapped lips with hyaluronic acid
+          </p>
+          <div class="price-container">
+            <span class="current-price">₹159.00</span>
+            <span class="original-price">₹250.00</span>
+          </div>
+          <button class="add-to-cart">Add to Cart</button>
+        </div>
+      </div>
+
+      <!-- Product 3 -->
+      <div class="product-card" data-id="prod3">
+        <div class="product-badge">LIMITED</div>
+        <div class="product-image">
+          <img
+            src="https://i.postimg.cc/4NBnZKrv/IMG-20250308-WA0039.jpg"
+            alt="Ultra Soothing Lip Moisturizer"
+          />
+        </div>
+        <div class="product-info">
+          <h3 class="product-title">Ultra Soothing Lip Moisturizer</h3>
+          <p class="product-desc">
+            Daily lip treatment with shea butter and vitamin E
+          </p>
+          <div class="price-container">
+            <span class="current-price">₹499.00</span>
+            <span class="original-price">₹699.00</span>
+          </div>
+          <button class="add-to-cart">Add to Cart</button>
+        </div>
+      </div>
+
+      <!-- Product 4 -->
+      <div class="product-card" data-id="prod4">
+        <div class="product-image">
+          <img
+            src="https://i.postimg.cc/3R5x92vh/IMG-20250308-WA0037.jpg"
+            alt="Collagen Booster Face Toner"
+          />
+        </div>
+        <div class="product-info">
+          <h3 class="product-title">Collagen Booster Face Toner</h3>
+          <p class="product-desc">
+            Refreshing toner that enhances skin elasticity and firmness
+          </p>
+          <div class="price-container">
+            <span class="current-price">₹358.00</span>
+            <span class="original-price">₹499.00</span>
+          </div>
+          <button class="add-to-cart">Add to Cart</button>
+        </div>
+      </div>
+
+      <!-- Product 5 -->
+      <div class="product-card" data-id="prod5">
+        <div class="product-badge">SALE</div>
+        <div class="product-image">
+          <img
+            src="https://i.postimg.cc/nz2f7mK0/IMG-20250308-WA0034.jpg"
+            alt="Exfoliating Solution"
+          />
+        </div>
+        <div class="product-info">
+          <h3 class="product-title">Exfoliating Solution</h3>
+          <p class="product-desc">
+            Gentle chemical exfoliant with AHA and BHA complex
+          </p>
+          <div class="price-container">
+            <span class="current-price">₹219.00</span>
+            <span class="original-price">₹350.00</span>
+          </div>
+          <button class="add-to-cart">Add to Cart</button>
+        </div>
+      </div>
+
+      <!-- Product 6 -->
+      <div class="product-card" data-id="prod6">
+        <div class="product-badge">BESTSELLER</div>
+        <div class="product-image">
+          <img
+            src="https://i.postimg.cc/pr0xNjpp/IMG-20250308-WA0035.jpg"
+            alt="Hylamide Radiance Booster"
+          />
+        </div>
+        <div class="product-info">
+          <h3 class="product-title">Hylamide Radiance Booster</h3>
+          <p class="product-desc">
+            Illuminating serum for a healthy, glowing complexion
+          </p>
+          <div class="price-container">
+            <span class="current-price">₹299.00</span>
+            <span class="original-price">₹450.00</span>
+          </div>
+          <button class="add-to-cart">Add to Cart</button>
+        </div>
+      </div>
+
+      <!-- Product 7 -->
+      <div class="product-card" data-id="prod7">
+        <div class="product-image">
+          <img
+            src="https://i.postimg.cc/NjK0sc9C/IMG-20250308-WA0052.jpg"
+            alt="Blend Archive Solution"
+          />
+        </div>
+        <div class="product-info">
+          <h3 class="product-title">Blend Archive Solution</h3>
+          <p class="product-desc">
+            Advanced formula for even skin tone and texture
+          </p>
+          <div class="price-container">
+            <span class="current-price">₹299.00</span>
+            <span class="original-price">₹399.00</span>
+          </div>
+          <button class="add-to-cart">Add to Cart</button>
+        </div>
+      </div>
+
+      <!-- Product 8 -->
+      <div class="product-card" data-id="prod8">
+        <div class="product-badge">NEW</div>
+        <div class="product-image">
+          <img
+            src="https://i.postimg.cc/kgH460MB/IMG-20250308-WA0038.jpg"
+            alt="Milky Jelly Cleanser"
+          />
+        </div>
+        <div class="product-info">
+          <h3 class="product-title">Milky Jelly Cleanser</h3>
+          <p class="product-desc">
+            Gentle yet effective cleanser for all skin types
+          </p>
+          <div class="price-container">
+            <span class="current-price">₹299.00</span>
+            <span class="original-price">₹399.00</span>
+          </div>
+          <button class="add-to-cart">Add to Cart</button>
+        </div>
+      </div>
+
+      <!-- Product 9 -->
+      <div class="product-card" data-id="prod9">
+        <div class="product-badge">LIMITED</div>
+        <div class="product-image">
+          <img
+            src="https://unsplash.com/photos/_dSHqe4mcWE/download"
+            alt="Vitamin C Serum"
+          />
+        </div>
+        <div class="product-info">
+          <h3 class="product-title">Brightening Vitamin C Serum</h3>
+          <p class="product-desc">
+            Potent antioxidant serum for radiant, even-toned skin
+          </p>
+          <div class="price-container">
+            <span class="current-price">₹599.00</span>
+            <span class="original-price">₹799.00</span>
+          </div>
+          <button class="add-to-cart">Add to Cart</button>
+        </div>
+      </div>
+
+      <!-- Product 10 -->
+      <div class="product-card" data-id="prod10">
+        <div class="product-image">
+          <img
+            src="https://unsplash.com/photos/ORBRvSN3o6s/download"
+            alt="Night Cream"
+          />
+        </div>
+        <div class="product-info">
+          <h3 class="product-title">Overnight Repair Cream</h3>
+          <p class="product-desc">
+            Intensive nighttime treatment with retinol and peptides
+          </p>
+          <div class="price-container">
+            <span class="current-price">₹699.00</span>
+            <span class="original-price">₹899.00</span>
+          </div>
+          <button class="add-to-cart">Add to Cart</button>
+        </div>
+      </div>
+
+      <!-- Product 11 -->
+      <div class="product-card" data-id="prod11">
+        <div class="product-badge">BESTSELLER</div>
+        <div class="product-image">
+          <img
+            src="https://images.unsplash.com/photo-1556228578-8c89e6adf883?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80"
+            alt="Eye Cream"
+          />
+        </div>
+        <div class="product-info">
+          <h3 class="product-title">Revitalizing Eye Cream</h3>
+          <p class="product-desc">
+            Targeted treatment for dark circles and puffiness
+          </p>
+          <div class="price-container">
+            <span class="current-price">₹499.00</span>
+            <span class="original-price">₹650.00</span>
+          </div>
+          <button class="add-to-cart">Add to Cart</button>
+        </div>
+      </div>
+
+      <!-- Product 12 -->
+      <div class="product-card" data-id="prod12">
+        <div class="product-badge">NEW</div>
+        <div class="product-image">
+          <img
+            src="https://unsplash.com/photos/zhhSRXohD9U/download"
+            alt="Facial Oil"
+          />
+        </div>
+        <div class="product-info">
+          <h3 class="product-title">Nourishing Facial Oil</h3>
+          <p class="product-desc">
+            Blend of 12 precious oils for deep hydration
+          </p>
+          <div class="price-container">
+            <span class="current-price">₹749.00</span>
+            <span class="original-price">₹999.00</span>
+          </div>
+          <button class="add-to-cart">Add to Cart</button>
+        </div>
+      </div>
+    </div>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        // Initialize cart count on page load
+        updateCartCountDisplay();
+
+        // Add event listeners to all "Add to Cart" buttons
+        document.querySelectorAll(".add-to-cart").forEach((button) => {
+          button.addEventListener("click", function () {
+            const productCard = this.closest(".product-card");
+            const productId = productCard.dataset.id;
+            const productName =
+              productCard.querySelector(".product-title").textContent;
+            const productPrice = parseFloat(
+              productCard
+                .querySelector(".current-price")
+                .textContent.replace("₹", "")
+            );
+            const productImage =
+              productCard.querySelector(".product-image img").src;
+
+            // Add item to cart
+            cart.addItem({
+              id: productId,
+              name: productName,
+              price: productPrice,
+              image: productImage,
+              quantity: 1,
+            });
+
+            // Show confirmation
+            showAddToCartConfirmation(productCard);
+
+            // Update button state temporarily
+            this.textContent = "Added!";
+            this.classList.add("added");
+
+            setTimeout(() => {
+              this.textContent = "Add to Cart";
+              this.classList.remove("added");
+            }, 2000);
+          });
+        });
+
+        // Function to show add to cart confirmation
+        function showAddToCartConfirmation(productCard) {
+          const confirmation = document.createElement("div");
+          confirmation.className = "add-to-cart-confirmation";
+          confirmation.textContent = "Added to cart!";
+          productCard.appendChild(confirmation);
+
+          setTimeout(() => {
+            confirmation.remove();
+          }, 2000);
+        }
+
+        // Function to update cart count display
+        function updateCartCountDisplay() {
+          const cartCount = document.getElementById("cart-count");
+          const totalItems = cart.getTotalItems();
+
+          if (totalItems > 0) {
+            cartCount.textContent = totalItems;
+            cartCount.style.display = "flex";
+          } else {
+            cartCount.style.display = "none";
+          }
+        }
+
+        // Listen for cart updates (in case you want to update from other tabs)
+        window.addEventListener("storage", function (e) {
+          if (e.key === "cart") {
+            updateCartCountDisplay();
+          }
+        });
+      });
+    </script>
+  </body>
+</html>

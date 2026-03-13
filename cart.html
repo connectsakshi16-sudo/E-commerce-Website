@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>UNLEASH. | Your Shopping Cart</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;700&family=Poppins:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <script src="../static/cart.js"></script>
+    <script src="../static/mainCart.js"></script>
+    <link rel="stylesheet" type="text/css" href="../static/mainCart.css" />
+  </head>
+
+  <body>
+    <div class="top-bar">FREE SHIPPING ON ALL ORDERS ABOVE ₹499</div>
+
+    <div class="navbar">
+      <div class="logo">UNLEASH.</div>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="products.html">Shop</a>
+        <a href="blogPage.html">Blog</a>
+        <a href="reviews.html">Reviews</a>
+        <a href="contact.html">Contact</a>
+      </div>
+      <div class="cart-icon">
+        <a href="cart.html">
+          <i class="fas fa-shopping-cart"></i>
+          <span id="cart-count" class="cart-count">0</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="cart-container">
+      <div class="cart-header">
+        <h1>Your Shopping Cart</h1>
+      </div>
+
+      <div class="cart-content">
+        <div class="cart-items" id="cart-items-container">
+          <!-- Cart items will be dynamically inserted here -->
+        </div>
+
+        <div class="cart-summary" id="cart-summary-container">
+          <!-- Cart summary will be dynamically inserted here -->
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

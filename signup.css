@@ -1,0 +1,407 @@
+:root {
+  --primary: #8a4fff;
+  --primary-light: #b18aff;
+  --primary-pastel: #f0e6ff;
+  --secondary: #ff9eb7;
+  --dark: #1a1a1a;
+  --light: #ffffff;
+  --gray: #888888;
+  --light-bg: #faf8ff;
+  --input-bg: #f5f2ff;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  background-color: var(--light-bg);
+  color: var(--dark);
+  line-height: 1.7;
+  padding-top: 70px;
+}
+
+/* Navbar - Slimmer Version */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 5%;
+  background: var(--light);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.08);
+  height: 70px;
+}
+
+.logo {
+  font-family: "Playfair Display", serif;
+  font-size: 28px;
+  font-weight: 700;
+  position: relative;
+}
+
+.logo::after {
+  content: "";
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(to right, var(--primary), var(--secondary));
+}
+
+.nav-links {
+  display: flex;
+  gap: 25px;
+}
+
+.nav-links a {
+  position: relative;
+  text-decoration: none;
+  color: var(--dark);
+  font-weight: 500;
+  font-size: 14px;
+  transition: all 0.3s ease;
+}
+
+.nav-links a:hover {
+  color: var(--primary);
+}
+
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: var(--primary);
+  transition: width 0.3s ease;
+}
+
+.nav-links a:hover::after {
+  width: 100%;
+}
+
+/* Improved Cart Icon */
+.nav-icons {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.cart-icon {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.cart-icon a {
+  color: var(--dark);
+  transition: color 0.3s ease;
+  display: flex;
+  align-items: center;
+}
+
+.cart-icon a:hover {
+  color: var(--primary);
+}
+
+.cart-count {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  background-color: var(--primary);
+  color: var(--light);
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.cart-icon:hover .cart-count {
+  transform: scale(1.1);
+}
+
+.login-btn {
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background: none;
+  border: none;
+  font-family: "Poppins", sans-serif;
+  font-size: 14px;
+  padding: 8px 16px;
+  border-radius: 20px;
+  color: var(--dark);
+}
+
+.login-btn:hover {
+  color: var(--primary);
+  background: var(--primary-pastel);
+}
+
+/* SIGNUP CONTAINER IMPROVEMENTS */
+.signup-container {
+  max-width: 500px;
+  margin: 60px auto;
+  padding: 40px;
+  background: var(--light);
+  border-radius: 16px;
+  box-shadow: 0 15px 40px rgba(138, 79, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.signup-container:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 50px rgba(138, 79, 255, 0.15);
+}
+
+.signup-header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.signup-header h1 {
+  font-family: "Playfair Display", serif;
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--primary);
+  margin-bottom: 10px;
+  background: linear-gradient(to right, var(--primary), var(--secondary));
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.signup-header p {
+  color: var(--gray);
+  font-size: 14px;
+}
+
+/* FORM IMPROVEMENTS */
+.form-group {
+  margin-bottom: 20px;
+  position: relative;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 500;
+  color: var(--dark);
+  font-size: 14px;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 14px 16px;
+  border: none;
+  background-color: var(--input-bg);
+  border-radius: 10px;
+  font-family: "Poppins", sans-serif;
+  font-size: 14px;
+  transition: all 0.3s ease;
+  border: 1px solid transparent;
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: var(--primary-light);
+  background-color: var(--light);
+  box-shadow: 0 0 0 3px rgba(138, 79, 255, 0.1);
+}
+
+.password-wrapper {
+  position: relative;
+}
+
+.password-toggle {
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--gray);
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.password-toggle:hover {
+  color: var(--primary);
+}
+
+.submit-btn {
+  width: 100%;
+  padding: 14px;
+  background: linear-gradient(to right, var(--primary), var(--secondary));
+  color: var(--light);
+  border: none;
+  border-radius: 10px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 10px;
+  box-shadow: 0 4px 15px rgba(138, 79, 255, 0.3);
+}
+
+.submit-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(138, 79, 255, 0.4);
+}
+
+.submit-btn:active {
+  transform: translateY(0);
+}
+
+/* DIVIDER IMPROVEMENT */
+.divider {
+  display: flex;
+  align-items: center;
+  margin: 25px 0;
+}
+
+.divider::before,
+.divider::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--gray), transparent);
+}
+
+.divider::after {
+  background: linear-gradient(to left, transparent, var(--gray), transparent);
+}
+
+.divider-text {
+  padding: 0 15px;
+  color: var(--gray);
+  font-size: 13px;
+  text-transform: uppercase;
+}
+
+/* LOGIN LINK IMPROVEMENT */
+.login-link {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 14px;
+  color: var(--gray);
+}
+
+.login-link a {
+  color: var(--primary);
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.login-link a::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background-color: var(--primary);
+  transition: width 0.3s ease;
+}
+
+.login-link a:hover::after {
+  width: 100%;
+}
+
+/* SOCIAL LOGIN BUTTONS (OPTIONAL ADDITION) */
+.social-login {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin: 20px 0;
+}
+
+.social-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 12px;
+  border-radius: 10px;
+  font-weight: 500;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: 1px solid #e0e0e0;
+  background-color: var(--light);
+  color: var(--dark);
+}
+
+.social-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+.social-btn.google {
+  color: #db4437;
+}
+
+.social-btn.facebook {
+  color: #4267b2;
+}
+
+.social-btn.apple {
+  color: var(--dark);
+}
+
+/* RESPONSIVE IMPROVEMENTS */
+@media (max-width: 768px) {
+  .nav-links {
+    display: none;
+  }
+
+  .navbar {
+    padding: 12px 3%;
+  }
+
+  .signup-container {
+    margin: 40px 5%;
+    padding: 30px;
+  }
+}
+
+@media (max-width: 480px) {
+  .signup-header h1 {
+    font-size: 28px;
+  }
+
+  .signup-container {
+    padding: 25px;
+    margin-top: 30px;
+  }
+
+  .logo {
+    font-size: 24px;
+  }
+
+  .cart-icon i {
+    font-size: 18px;
+  }
+
+  .submit-btn {
+    padding: 12px;
+    font-size: 15px;
+  }
+}

@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Customer Reviews | UNLEASH Cosmetics</title>
+    <!-- Include your existing fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&family=IBM+Plex+Sans:ital,wght@0,100..700;1,100..700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+
+    <style>
+      /* Main Reviews Page Styles */
+      :root {
+        --primary: #a444a5; /* Soft pink */
+        --secondary: #f8d7da; /* Light pink */
+        --dark: #333;
+        --light: #fff;
+        --star: #ffc107;
+      }
+
+      body {
+        font-family: "Poppins", sans-serif;
+        background-color: #fafafa;
+        color: #333;
+        margin: 0;
+        padding: 0;
+      }
+
+      .reviews-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 2rem;
+      }
+
+      .reviews-header {
+        text-align: center;
+        margin-bottom: 1rem;
+      }
+
+      .reviews-header h1 {
+        font-family: "Amatic SC", cursive;
+        font-size: 3.5rem;
+        color: var(--primary);
+        margin-bottom: 1rem;
+      }
+
+      .reviews-header p {
+        font-size: 1.1rem;
+        max-width: 700px;
+        margin: 0 auto;
+        color: #666;
+      }
+
+      /* Button Styles */
+      .button-container {
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+        margin: 2rem auto;
+        flex-wrap: wrap;
+      }
+
+      .cta-button {
+        display: block;
+        width: fit-content;
+        background-color: var(--primary);
+        color: white;
+        border: none;
+        padding: 1rem 2rem;
+        border-radius: 50px;
+        font-size: 1.1rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        text-decoration: none;
+        text-align: center;
+      }
+
+      .home-button {
+        background: var(--primary);
+      }
+
+      .home-button:hover {
+        background-color: #5a6268;
+      }
+
+      .cta-button:hover {
+        background-color: #df8be3;
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(164, 68, 165, 0.3);
+      }
+
+      /* Review Cards */
+      .review-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+        gap: 2rem;
+        margin-bottom: 3rem;
+      }
+
+      .review-card {
+        background: white;
+        border-radius: 15px;
+        padding: 2rem;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .review-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+      }
+
+      .reviewer-info {
+        display: flex;
+        align-items: center;
+        margin-bottom: 1rem;
+      }
+
+      .reviewer-avatar {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        object-fit: cover;
+        margin-right: 1rem;
+        border: 3px solid var(--secondary);
+      }
+
+      .reviewer-name {
+        font-weight: 700;
+        margin-bottom: 0.3rem;
+      }
+
+      .review-date {
+        color: #999;
+        font-size: 0.9rem;
+      }
+
+      .stars {
+        color: var(--star);
+        margin-bottom: 1rem;
+      }
+
+      .review-title {
+        font-weight: 700;
+        font-size: 1.2rem;
+        margin-bottom: 0.8rem;
+        color: var(--dark);
+      }
+
+      .review-content {
+        color: #555;
+        line-height: 1.6;
+      }
+
+      .review-product {
+        margin-top: 1rem;
+        font-style: italic;
+        color: var(--primary);
+        display: flex;
+        align-items: center;
+      }
+
+      .review-product i {
+        margin-right: 0.5rem;
+      }
+
+      /* Responsive */
+      @media (max-width: 768px) {
+        .review-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .reviews-header h1 {
+          font-size: 2.5rem;
+        }
+
+        .button-container {
+          flex-direction: column;
+          align-items: center;
+        }
+
+        .cta-button {
+          width: 100%;
+          max-width: 300px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Include your existing navbar here -->
+
+    <div class="reviews-container">
+      <div class="reviews-header">
+        <h1>Unleash Reviews</h1>
+        <p>
+          See what our community is saying about our products. Your feedback
+          helps us grow and serve you better.
+        </p>
+      </div>
+
+      <div class="button-container">
+        <a href="index.html" class="cta-button home-button">
+          <i class="fas fa-home"></i> Back to Home
+        </a>
+        <a href="submit-review.html" class="cta-button">
+          <i class="fas fa-pen-alt"></i> Share Your Experience
+        </a>
+      </div>
+
+      <div class="review-grid">
+        <!-- Review 1 -->
+        <div class="review-card">
+          <div class="reviewer-info">
+            <img
+              src="https://randomuser.me/api/portraits/women/32.jpg"
+              alt="Sarah Johnson"
+              class="reviewer-avatar"
+            />
+            <div>
+              <div class="reviewer-name">Sarah Johnson</div>
+              <div class="review-date">March 15, 2024</div>
+            </div>
+          </div>
+          <div class="stars">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+          </div>
+          <h3 class="review-title">Absolutely in love!</h3>
+          <p class="review-content">
+            The vitamin C serum has transformed my skin in just 2 weeks! My
+            complexion is brighter and more even. I've gotten so many
+            compliments.
+          </p>
+          <div class="review-product">
+            <i class="fas fa-tag"></i> Brightening Vitamin C Serum
+          </div>
+        </div>
+
+        <!-- Review 2 -->
+        <div class="review-card">
+          <div class="reviewer-info">
+            <img
+              src="https://randomuser.me/api/portraits/women/44.jpg"
+              alt="Mia Chen"
+              class="reviewer-avatar"
+            />
+            <div>
+              <div class="reviewer-name">Mia Chen</div>
+              <div class="review-date">February 28, 2024</div>
+            </div>
+          </div>
+          <div class="stars">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star-half-alt"></i>
+          </div>
+          <h3 class="review-title">Perfect for sensitive skin</h3>
+          <p class="review-content">
+            As someone with extremely sensitive skin, I'm always hesitant to try
+            new products. This moisturizer is so gentle yet effective. No
+            irritation at all!
+          </p>
+          <div class="review-product">
+            <i class="fas fa-tag"></i> Soothing Aloe Moisturizer
+          </div>
+        </div>
+
+        <!-- Review 3 -->
+        <div class="review-card">
+          <div class="reviewer-info">
+            <img
+              src="https://randomuser.me/api/portraits/men/22.jpg"
+              alt="David Wilson"
+              class="reviewer-avatar"
+            />
+            <div>
+              <div class="reviewer-name">David Wilson</div>
+              <div class="review-date">February 10, 2024</div>
+            </div>
+          </div>
+          <div class="stars">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+          </div>
+          <h3 class="review-title">Worth every penny</h3>
+          <p class="review-content">
+            The eye cream has significantly reduced my dark circles. I've tried
+            dozens of products before but this is the first that actually
+            delivers results.
+          </p>
+          <div class="review-product">
+            <i class="fas fa-tag"></i> Revitalizing Eye Cream
+          </div>
+        </div>
+
+        <!-- Review 4 -->
+        <div class="review-card">
+          <div class="reviewer-info">
+            <img
+              src="https://randomuser.me/api/portraits/women/65.jpg"
+              alt="Emma Rodriguez"
+              class="reviewer-avatar"
+            />
+            <div>
+              <div class="reviewer-name">Emma Rodriguez</div>
+              <div class="review-date">January 22, 2024</div>
+            </div>
+          </div>
+          <div class="stars">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+          </div>
+          <h3 class="review-title">Holy Grail Product!</h3>
+          <p class="review-content">
+            The facial mist is so refreshing and keeps my skin hydrated all day.
+            I keep one at my desk and one in my purse. Obsessed!
+          </p>
+          <div class="review-product">
+            <i class="fas fa-tag"></i> Hydrating Facial Mist
+          </div>
+        </div>
+
+        <!-- Review 5 -->
+        <div class="review-card">
+          <div class="reviewer-info">
+            <img
+              src="https://randomuser.me/api/portraits/men/45.jpg"
+              alt="James Lee"
+              class="reviewer-avatar"
+            />
+            <div>
+              <div class="reviewer-name">James Lee</div>
+              <div class="review-date">December 15, 2023</div>
+            </div>
+          </div>
+          <div class="stars">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="far fa-star"></i>
+          </div>
+          <h3 class="review-title">Great for oily skin</h3>
+          <p class="review-content">
+            The clay mask really helps control my oil production without
+            overdrying. My pores look noticeably smaller after each use.
+          </p>
+          <div class="review-product">
+            <i class="fas fa-tag"></i> Detox Clay Mask
+          </div>
+        </div>
+
+        <!-- Review 6 -->
+        <div class="review-card">
+          <div class="reviewer-info">
+            <img
+              src="https://randomuser.me/api/portraits/women/28.jpg"
+              alt="Sophia Patel"
+              class="reviewer-avatar"
+            />
+            <div>
+              <div class="reviewer-name">Sophia Patel</div>
+              <div class="review-date">November 30, 2023</div>
+            </div>
+          </div>
+          <div class="stars">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star-half-alt"></i>
+          </div>
+          <h3 class="review-title">Noticeable difference</h3>
+          <p class="review-content">
+            After just 3 uses of the serum, my skin texture has improved
+            dramatically. It feels so smooth and looks more youthful.
+          </p>
+          <div class="review-product">
+            <i class="fas fa-tag"></i> Brightening Vitamin C Serum
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Include your existing footer here -->
+
+    <script>
+      // Load and display stored reviews
+      document.addEventListener("DOMContentLoaded", function () {
+        // Load reviews from localStorage
+        const storedReviews =
+          JSON.parse(localStorage.getItem("cosmeticReviews")) || [];
+
+        if (storedReviews.length > 0) {
+          const reviewGrid = document.querySelector(".review-grid");
+
+          storedReviews.forEach((review) => {
+            const reviewCard = createReviewCard(review);
+            reviewGrid.insertBefore(reviewCard, reviewGrid.firstChild);
+          });
+        }
+      });
+
+      function createReviewCard(review) {
+        const card = document.createElement("div");
+        card.className = "review-card";
+
+        // Format date
+        const reviewDate = new Date(review.date).toLocaleDateString("en-US", {
+          year: "numeric",
+          month: "long",
+          day: "numeric",
+        });
+
+        card.innerHTML = `
+          <div class="reviewer-info">
+            <img src="https://ui-avatars.com/api/?name=${encodeURIComponent(
+              review.userName
+            )}&background=ff85a2&color=fff" 
+                 alt="${review.userName}" class="reviewer-avatar">
+            <div>
+              <div class="reviewer-name">${review.userName}</div>
+              <div class="review-date">${reviewDate}</div>
+            </div>
+          </div>
+          <div class="stars">
+            ${'<i class="fas fa-star"></i>'.repeat(review.rating)}
+            ${
+              review.rating < 5
+                ? '<i class="far fa-star"></i>'.repeat(5 - review.rating)
+                : ""
+            }
+          </div>
+          <h3 class="review-title">${review.reviewTitle}</h3>
+          <p class="review-content">${review.reviewText}</p>
+          <div class="review-product">
+            <i class="fas fa-tag"></i> ${review.productSelect}
+          </div>
+        `;
+
+        return card;
+      }
+    </script>
+  </body>
+</html>

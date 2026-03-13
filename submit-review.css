@@ -1,0 +1,163 @@
+:root {
+  --primary: #a444a5;
+  --secondary: #f8d7da;
+  --dark: #333;
+  --light: #fff;
+  --star: #ffc107;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  background-color: #fafafa;
+  color: #333;
+  margin: 0;
+  padding: 0;
+}
+
+.review-submission-container {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 2rem;
+}
+
+.back-button {
+  display: inline-block;
+  margin-bottom: 1.5rem;
+  color: var(--primary);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.back-button i {
+  margin-right: 0.5rem;
+}
+
+.submission-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.submission-header h1 {
+  font-family: "Amatic SC", cursive;
+  font-size: 3.5rem;
+  color: var(--primary);
+  margin-bottom: 0.5rem;
+}
+
+.submission-header p {
+  color: #666;
+}
+
+/* Review Form */
+.review-form {
+  background: white;
+  border-radius: 15px;
+  padding: 2.5rem;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+.rating-input {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+  direction: rtl;
+}
+
+.rating-input input {
+  display: none;
+}
+
+.rating-input label {
+  font-size: 2rem;
+  color: #ddd;
+  cursor: pointer;
+  padding: 0 0.2rem;
+}
+
+.rating-input input:checked ~ label,
+.rating-input label:hover,
+.rating-input label:hover ~ label {
+  color: var(--star);
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+  width: 100%;
+  padding: 0.8rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-family: "Poppins", sans-serif;
+}
+
+.form-group textarea {
+  min-height: 150px;
+  resize: vertical;
+}
+
+.submit-review {
+  background-color: var(--primary);
+  color: white;
+  border: none;
+  padding: 1rem 2rem;
+  border-radius: 50px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  display: block;
+  margin: 2rem auto 0;
+  width: 100%;
+  max-width: 300px;
+}
+
+.submit-review:hover {
+  background-color: #df8be3;
+}
+
+/* Confirmation Message */
+.confirmation-message {
+  display: none;
+  text-align: center;
+  padding: 2rem;
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+.confirmation-message i {
+  font-size: 4rem;
+  color: var(--primary);
+  margin-bottom: 1rem;
+}
+
+.confirmation-message h2 {
+  font-family: "Amatic SC", cursive;
+  font-size: 2.5rem;
+  color: var(--primary);
+  margin-bottom: 0.5rem;
+}
+
+@media (max-width: 768px) {
+  .review-submission-container {
+    padding: 1rem;
+  }
+
+  .submission-header h1 {
+    font-size: 2.5rem;
+  }
+
+  .review-form {
+    padding: 1.5rem;
+  }
+}

@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>UNLEASH. | Payment</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;700&family=Poppins:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <script src="../static/paymentPage.js"></script>
+    <link rel="stylesheet" type="text/css" href="../static/paymentPage.css" />
+    <script src="../static/cart.js"></script>
+  </head>
+  <body>
+    <div class="top-bar">FREE SHIPPING ON ALL ORDERS ABOVE ₹499</div>
+
+    <div class="navbar">
+      <div class="logo">UNLEASH.</div>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="products.html">Shop</a>
+        <a href="blogPage.html">Blog</a>
+        <a href="reviews.html">Reviews</a>
+        <a href="#">Contact</a>
+      </div>
+      <div class="cart-icon">
+        <a href="cart.html">
+          <i class="fas fa-shopping-cart"></i>
+          <span id="cart-count" class="cart-count">0</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="payment-container">
+      <!-- Payment Methods -->
+      <div class="payment-methods">
+        <h1 class="payment-title">Payment Method</h1>
+
+        <!-- Credit/Debit Card -->
+        <div class="payment-option">
+          <div class="payment-option-header">
+            <input
+              type="radio"
+              id="credit-card"
+              name="payment-method"
+              checked
+            />
+            <label for="credit-card" class="payment-option-label">
+              <i class="far fa-credit-card payment-option-icon"></i>
+              Credit/Debit Card
+            </label>
+          </div>
+          <div class="payment-option-content">
+            <form class="card-form">
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="card-number">Card Number</label>
+                  <input
+                    type="text"
+                    id="card-number"
+                    placeholder="1234 5678 9012 3456"
+                  />
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="card-name">Name on Card</label>
+                  <input type="text" id="card-name" placeholder="John Doe" />
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="expiry-date">Expiry Date</label>
+                  <input type="text" id="expiry-date" placeholder="MM/YY" />
+                </div>
+                <div class="form-group">
+                  <label for="cvv">CVV</label>
+                  <input type="text" id="cvv" placeholder="123" />
+                </div>
+              </div>
+              <div class="card-icons">
+                <img
+                  src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/visa/visa-original.svg"
+                  alt="Visa"
+                  class="card-icon"
+                  onerror="this.src='https://via.placeholder.com/40x25?text=VISA'"
+                />
+                <img
+                  src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mastercard/mastercard-original.svg"
+                  alt="Mastercard"
+                  class="card-icon"
+                  onerror="this.src='https://via.placeholder.com/40x25?text=MC'"
+                />
+                <img
+                  src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/apple/apple-original.svg"
+                  alt="Apple Pay"
+                  class="card-icon"
+                  onerror="this.src='https://via.placeholder.com/40x25?text=Apple'"
+                />
+                <img
+                  src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/google/google-original.svg"
+                  alt="Google Pay"
+                  class="card-icon"
+                  onerror="this.src='https://via.placeholder.com/40x25?text=Google'"
+                />
+              </div>
+            </form>
+          </div>
+        </div>
+
+        <!-- UPI -->
+        <div class="payment-option">
+          <div class="payment-option-header">
+            <input type="radio" id="upi" name="payment-method" />
+            <label for="upi" class="payment-option-label">
+              <i class="fas fa-mobile-alt payment-option-icon"></i>
+              UPI Payment
+            </label>
+          </div>
+          <div class="payment-option-content">
+            <div class="form-group">
+              <label for="upi-id">UPI ID</label>
+              <input type="text" id="upi-id" placeholder="yourname@upi" />
+            </div>
+            <div class="upi-options">
+              <div class="upi-option">
+                <img
+                  src="https://logos-download.com/wp-content/uploads/2021/01/Paytm_Logo.png"
+                  alt="Paytm"
+                  onerror="this.src='https://via.placeholder.com/40?text=Paytm'"
+                />
+                <p>Paytm</p>
+              </div>
+              <div class="upi-option">
+                <img
+                  src="https://logos-download.com/wp-content/uploads/2021/01/PhonePe_Logo.png"
+                  alt="PhonePe"
+                  onerror="this.src='https://via.placeholder.com/40?text=PhonePe'"
+                />
+                <p>PhonePe</p>
+              </div>
+              <div class="upi-option">
+                <img
+                  src="https://logos-download.com/wp-content/uploads/2020/06/Google_Pay_Logo.png"
+                  alt="Google Pay"
+                  onerror="this.src='https://via.placeholder.com/40?text=G-Pay'"
+                />
+                <p>Google Pay</p>
+              </div>
+              <div class="upi-option">
+                <img
+                  src="https://upload.wikimedia.org/wikipedia/commons/f/f6/Bhim_Logo.png"
+                  alt="BHIM"
+                  onerror="this.src='https://via.placeholder.com/40?text=BHIM'"
+                />
+                <p>BHIM</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Net Banking -->
+        <div class="payment-option">
+          <div class="payment-option-header">
+            <input type="radio" id="net-banking" name="payment-method" />
+            <label for="net-banking" class="payment-option-label">
+              <i class="fas fa-university payment-option-icon"></i>
+              Net Banking
+            </label>
+          </div>
+          <div class="payment-option-content">
+            <select class="net-banking-select">
+              <option value="">Select your bank</option>
+              <option value="sbi">State Bank of India</option>
+              <option value="hdfc">HDFC Bank</option>
+              <option value="icici">ICICI Bank</option>
+              <option value="axis">Axis Bank</option>
+              <option value="kotak">Kotak Mahindra Bank</option>
+              <option value="pnb">Punjab National Bank</option>
+              <option value="bob">Bank of Baroda</option>
+              <option value="yes">Yes Bank</option>
+            </select>
+            <p style="margin-top: 15px; font-size: 13px; color: var(--gray)">
+              You will be redirected to your bank's secure payment page to
+              complete the transaction.
+            </p>
+          </div>
+        </div>
+
+        <!-- Cash on Delivery -->
+        <div class="payment-option">
+          <div class="payment-option-header">
+            <input type="radio" id="cod" name="payment-method" />
+            <label for="cod" class="payment-option-label">
+              <i class="fas fa-money-bill-wave payment-option-icon"></i>
+              Cash on Delivery (COD)
+            </label>
+          </div>
+          <div class="payment-option-content">
+            <p style="color: var(--gray)">
+              Pay cash when your order is delivered. An additional ₹50 COD
+              charge may apply.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Order Summary -->
+      <div class="order-summary">
+        <h2 class="order-summary-title">Order Summary</h2>
+
+        <div class="order-items" id="order-items-container">
+          <!-- Order items will be dynamically inserted here -->
+        </div>
+
+        <div class="order-totals" id="order-totals-container">
+          <!-- Order totals will be dynamically inserted here -->
+        </div>
+
+        <button
+          onclick="window.location.href='order.html'"
+          class="shop-now-btn"
+        >
+          Pay Now
+        </button>
+      </div>
+    </div>
+  </body>
+</html>
