@@ -103,7 +103,7 @@ document.addEventListener("DOMContentLoaded", function () {
                   2
                 )}</span>
             </div>
-            <a href="checkout.html">
+            <a href="checkOut.html">
 <button class="checkout-btn">Proceed to Checkout</button>
 </a>
             <a href="products.html" class="continue-shopping">Continue Shopping</a>
