@@ -92,45 +92,39 @@
           field.addEventListener("change", checkFormValidity);
         });
 
-        // Place order button click handler
         placeOrderBtn.addEventListener("click", function () {
-          if (!placeOrderBtn.disabled) {
-            // Save order to localStorage
-            const order = {
-              id: Date.now().toString(),
-              date: new Date().toISOString(),
-              items: cart,
-              subtotal,
-              shipping,
-              total,
-              shippingInfo: {
-                name: `${document.getElementById("first-name").value} ${
-                  document.getElementById("last-name").value
-                }`,
-                email: document.getElementById("email").value,
-                phone: document.getElementById("phone").value,
-                address: document.getElementById("address").value,
-                city: document.getElementById("city").value,
-                state: document.getElementById("state").value,
-                zip: document.getElementById("zip").value,
-                country: document.getElementById("country").value,
-                notes: document.getElementById("notes").value,
-              },
-              status: "Processing",
-            };
+  if (!placeOrderBtn.disabled) {
 
-            // Save order to localStorage
-            const orders = JSON.parse(localStorage.getItem("orders")) || [];
-            orders.push(order);
-            localStorage.setItem("orders", JSON.stringify(orders));
+    const order = {
+      id: Date.now().toString(),
+      date: new Date().toISOString(),
+      items: cart,
+      subtotal,
+      shipping,
+      total,
+      shippingInfo: {
+        name: `${document.getElementById("first-name").value} ${document.getElementById("last-name").value}`,
+        email: document.getElementById("email").value,
+        phone: document.getElementById("phone").value,
+        address: document.getElementById("address").value,
+        city: document.getElementById("city").value,
+        state: document.getElementById("state").value,
+        zip: document.getElementById("zip").value,
+        country: document.getElementById("country").value,
+        notes: document.getElementById("notes").value,
+      },
+      status: "Processing",
+    };
 
-            // Clear cart
-            localStorage.setItem("cart", JSON.stringify([]));
+    const orders = JSON.parse(localStorage.getItem("orders")) || [];
+    orders.push(order);
+    localStorage.setItem("orders", JSON.stringify(orders));
 
-            // Redirect to payment page
-            window.location.href = "paymentPage.html";
-          }
-        });
+    // DO NOT CLEAR CART HERE
+
+    window.location.href = "paymentPage.html";
+  }
+});
 
         // Initial check
         checkFormValidity();
