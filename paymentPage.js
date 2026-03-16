@@ -90,82 +90,80 @@
           });
         });
 
-        // Pay Now button
-        document
-          .getElementById("pay-now-btn")
-          .addEventListener("click", function () {
-            // Get selected payment method
-            const selectedMethod = document.querySelector(
-              'input[name="payment-method"]:checked'
-            ).id;
+// Pay Now button
+document
+  .getElementById("pay-now-btn")
+  .addEventListener("click", function () {
 
-            // Validate form based on selected method
-            let isValid = true;
-            let errorMessage = "";
+    // Get selected payment method
+    const selectedMethod = document.querySelector(
+      'input[name="payment-method"]:checked'
+    ).id;
 
-            if (selectedMethod === "credit-card") {
-              const cardNumber = document
-                .getElementById("card-number")
-                .value.replace(/\s/g, "");
-              const cardName = document.getElementById("card-name").value;
-              const expiryDate = document.getElementById("expiry-date").value;
-              const cvv = document.getElementById("cvv").value;
+    // Convert method to readable name
+    let paymentName = "";
 
-              if (!cardNumber || !cardName || !expiryDate || !cvv) {
-                isValid = false;
-                errorMessage = "Please fill in all card details";
-              } else if (!/^\d{16}$/.test(cardNumber)) {
-                isValid = false;
-                errorMessage = "Please enter a valid 16-digit card number";
-              } else if (!/^\d{2}\/\d{2}$/.test(expiryDate)) {
-                isValid = false;
-                errorMessage = "Please enter expiry date in MM/YY format";
-              } else if (!/^\d{3,4}$/.test(cvv)) {
-                isValid = false;
-                errorMessage = "Please enter a valid CVV (3 or 4 digits)";
-              }
-            } else if (selectedMethod === "upi") {
-              const upiId = document.getElementById("upi-id").value;
-              if (!upiId) {
-                isValid = false;
-                errorMessage = "Please enter your UPI ID";
-              } else if (!/^[\w.-]+@[\w]+$/.test(upiId)) {
-                isValid = false;
-                errorMessage = "Please enter a valid UPI ID (e.g. name@upi)";
-              }
-            } else if (selectedMethod === "net-banking") {
-              const bank = document.querySelector(".net-banking-select").value;
-              if (!bank) {
-                isValid = false;
-                errorMessage = "Please select your bank";
-              }
-            }
+    if (selectedMethod === "credit-card") {
+      paymentName = "Credit / Debit Card";
+    } 
+    else if (selectedMethod === "upi") {
+      paymentName = "UPI";
+    } 
+    else if (selectedMethod === "net-banking") {
+      paymentName = "Net Banking";
+    } 
+    else if (selectedMethod === "cod") {
+      paymentName = "Cash on Delivery";
+    }
 
-            if (!isValid) {
-              alert(errorMessage);
-              return;
-            }
+    // Validate form
+    let isValid = true;
+    let errorMessage = "";
 
-            // Save payment method to order
-            const order = {
-              items: cart,
-              paymentMethod: selectedMethod,
-              paymentStatus: "Paid",
-              totalAmount: total,
-              shipping: shipping,
-              date: new Date().toISOString(),
-            };
+    if (selectedMethod === "credit-card") {
+      const cardNumber = document
+        .getElementById("card-number")
+        .value.replace(/\s/g, "");
+      const cardName = document.getElementById("card-name").value;
+      const expiryDate = document.getElementById("expiry-date").value;
+      const cvv = document.getElementById("cvv").value;
 
-            // Save order to localStorage
-            const orders = JSON.parse(localStorage.getItem("orders")) || [];
-            orders.push(order);
-            localStorage.setItem("orders", JSON.stringify(orders));
+      if (!cardNumber || !cardName || !expiryDate || !cvv) {
+        isValid = false;
+        errorMessage = "Please fill in all card details";
+      }
+    }
 
-            // Clear cart
-            localStorage.removeItem("cart");
+    if (!isValid) {
+      alert(errorMessage);
+      return;
+    }
 
-            // Redirect to confirmation page
-            window.location.href = "order-confirmation.html";
-          });
+    // Create order object
+    const order = {
+      id: "ORD" + Date.now(),   // unique order id
+      items: cart,
+      paymentMethod: paymentName,
+      paymentStatus: "Paid",
+      total: total,
+      shipping: shipping,
+      status: "Processing",
+      date: new Date().toISOString(),
+    };
+
+    // Save order
+    const orders = JSON.parse(localStorage.getItem("orders")) || [];
+    orders.push(order);
+    localStorage.setItem("orders", JSON.stringify(orders));
+
+    // Save latest order id
+    localStorage.setItem("latestOrderId", order.id);
+
+    // Clear cart
+    localStorage.removeItem("cart");
+
+    // Redirect to order page
+    window.location.href = "order.html?orderId=" + order.id;
+  });
       });
     
